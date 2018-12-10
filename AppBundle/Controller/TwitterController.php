@@ -15,7 +15,7 @@ class TwitterController
      *
      * @return JsonResponse
      */
-    public function queryTweets($count, $username)
+    public function queryTweets(int $count, string $username)
     {
         $arrayRepresentation = [];
         $code = 200;
@@ -23,7 +23,7 @@ class TwitterController
         try {
             // Retrieve tweets
             $TweetRepoObj	= new GuzzleTweetRepository();
-            $tweets			= $TweetRepoObj->findByUsername($username, $count);
+            $tweets			= $TweetRepoObj->findTweetsByUsername($username, $count);
 
             // Serialize data and return response
             $arrayRepresentation = TweetSerializer::serializeTweets($tweets);

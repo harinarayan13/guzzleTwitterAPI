@@ -1,5 +1,4 @@
 <?php
-
 namespace CoreDomain;
 
 /**
@@ -10,7 +9,6 @@ namespace CoreDomain;
  */
 class TweetFactory
 {
-
     public static function createTweetsFromArrayObjects($objectArray)
     {
         $result = [];
