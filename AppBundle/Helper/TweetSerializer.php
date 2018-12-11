@@ -2,8 +2,8 @@
 namespace AppBundle\Helper;
 
 /**
- * Class TweetSerializer is a helper class that serialize tweet object into an array representation.
- */
+* Class TweetSerializer is a helper class that serialize tweet object into an array representation.
+*/
 class TweetSerializer
 {
     public static function serializeTweets($tweets)

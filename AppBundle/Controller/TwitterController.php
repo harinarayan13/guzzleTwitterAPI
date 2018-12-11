@@ -9,17 +9,17 @@ use CoreDomain\UserNotFoundException;
 class TwitterController
 {
     /**
-     * Retrieves the 'count' latests tweets from a given username.
-     * @param $count Count of tweets to be fetched.
-     * @param $username Username from who retrieve the tweets.
-     *
-     * @return JsonResponse
-     */
+    * Retrieves the 'count' latests tweets from a given username.
+    * @param $count Count of tweets to be fetched.
+    * @param $username Username from who retrieve the tweets.
+    *
+    * @return JsonResponse
+    */
     public function queryTweets(int $count, string $username)
     {
         $arrayRepresentation = [];
-        $code = 200;
-        $message = "";
+        $code       = 200;
+        $message    = null;
         try {
             // Retrieve tweets
             $TweetRepoObj	= new GuzzleTweetRepository();
@@ -27,14 +27,13 @@ class TwitterController
 
             // Serialize data and return response
             $arrayRepresentation = TweetSerializer::serializeTweets($tweets);
-        } catch (UserNotFoundException $ex) {
-            $code = $ex->getCode();
-            $message = $ex->getMessage();
-        } catch (Exception $ex) {
-            $code = $ex->getCode();
-            $message = $ex->getMessage();
+        } catch (UserNotFoundException $exception) {
+            $code       = $exception->getCode();
+            $message    = $exception->getMessage();
+        } catch (Exception $exception) {
+            $code       = $exception->getCode();
+            $message    = $exception->getMessage();
         }
-
         $response = array(
             "code" => $code,
             "message" => $message,

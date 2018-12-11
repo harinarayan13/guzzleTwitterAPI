@@ -2,11 +2,11 @@
 namespace CoreDomain;
 
 /**
- * Class TweetFactory encapsulates all the business logic need to create a Tweet. In this example it is also used
- * by the TweetRepository to reconstitute tweets.
- *
- * @package CoreDomain
- */
+* Class TweetFactory encapsulates all the business logic need to create a Tweet. In this example it is also used
+* by the TweetRepository to reconstitute tweets.
+*
+* @package CoreDomain
+*/
 class TweetFactory
 {
     public static function createTweetsFromArrayObjects($objectArray)
@@ -19,15 +19,15 @@ class TweetFactory
     }
 
     /**
-     * Creates a new CoreDomain\Tweet instance given a set of values.
-     *
-     * @param $id
-     * @param $text
-     * @param $created_at
-     * @return Tweet
-     */
-    public static function createTweet($id, $text, $created_at)
+    * Creates a new CoreDomain\Tweet instance given a set of values.
+    *
+    * @param $id
+    * @param $text
+    * @param $created_at
+    * @return Tweet
+    */
+    public static function createTweet($tweet_id, $text, $created_at)
     {
-        return new Tweet($id, $text, $created_at);
+        return new Tweet($tweet_id, $text, $created_at);
     }
 }
