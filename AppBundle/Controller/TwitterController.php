@@ -17,13 +17,13 @@ class TwitterController
     */
     public function queryTweets(int $count, string $username)
     {
-        $arrayRepresentation = [];
-        $code       = 200;
-        $message    = null;
+        $arrayRepresentation    = [];
+        $code                   = 200;
+        $message                = null;
         try {
             // Retrieve tweets
-            $TweetRepoObj	= new GuzzleTweetRepository();
-            $tweets			= $TweetRepoObj->findTweetsByUsername($username, $count);
+            $TweetRepoObj   = new GuzzleTweetRepository();
+            $tweets         = $TweetRepoObj->findTweetsByUsername($username, $count);
 
             // Serialize data and return response
             $arrayRepresentation = TweetSerializer::serializeTweets($tweets);
