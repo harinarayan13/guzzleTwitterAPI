@@ -10,10 +10,10 @@ class TweetSerializer
     {
         $result = [];
         foreach ($tweets as $tweet) {
-            $result[] = array(
-                "id" => $tweet->getId(),
-                "text" => $tweet->getText(),
-                "created_at" => $tweet->getCreatedAt()
+            $result[]   = array(
+                "id"            => $tweet->getTweetId(),
+                "text"          => $tweet->getText(),
+                "created_at"    => $tweet->getCreatedAt()
             );
         }
         return $result;

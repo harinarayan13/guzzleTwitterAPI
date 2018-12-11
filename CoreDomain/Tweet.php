@@ -10,7 +10,7 @@ namespace CoreDomain;
 */
 class Tweet
 {
-    private $id;
+    private $tweet_id;
     private $text;
     private $created_at;
 
@@ -20,19 +20,19 @@ class Tweet
     * @param $text
     * @param $created_at
     */
-    public function __construct($id, $text, $created_at)
+    public function __construct($tweet_id, $text, $created_at)
     {
-        $this->id = $id;
-        $this->text = $text;
-        $this->created_at = $created_at;
+        $this->tweet_id     = $tweet_id;
+        $this->text         = $text;
+        $this->created_at   = $created_at;
     }
 
     /**
     * @return mixed
     */
-    public function getId()
+    public function getTweetId()
     {
-        return $this->id;
+        return $this->tweet_id;
     }
 
     /**

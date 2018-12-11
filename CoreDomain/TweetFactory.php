@@ -13,7 +13,7 @@ class TweetFactory
     {
         $result = [];
         foreach($objectArray as $object) {
-            $result[] = TweetFactory::createTweet($object->id, $object->text, $object->created_at);
+            $result[]   = TweetFactory::createTweet($object->id, $object->text, $object->created_at);
         }
         return $result;
     }
@@ -21,7 +21,7 @@ class TweetFactory
     /**
     * Creates a new CoreDomain\Tweet instance given a set of values.
     *
-    * @param $id
+    * @param $tweet_id
     * @param $text
     * @param $created_at
     * @return Tweet
