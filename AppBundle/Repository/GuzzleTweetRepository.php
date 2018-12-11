@@ -12,7 +12,7 @@ use Exception;
  */
 class GuzzleTweetRepository
 {
-    const TWITTER_API_BASE_URL	= "https://api.twitter.com/1.1/";
+    const TWITTER_API_BASE_URL  = "https://api.twitter.com/1.1/";
 
     private $client;
     /**
@@ -20,7 +20,7 @@ class GuzzleTweetRepository
     */
     public function __construct()
     {
-	   $this->client = $this->initGuzzleClient();
+	   $this->client   = $this->initGuzzleClient();
     }
 
     /**
@@ -28,8 +28,8 @@ class GuzzleTweetRepository
     */
     private function initGuzzleClient()
     {
-	   $stack	= HandlerStack::create();
-	   $oauth	= TweetRepositoryAuth::getAuthconfiguration();
+	   $stack  = HandlerStack::create();
+	   $oauth  = TweetRepositoryAuth::getAuthconfiguration();
 	   $stack->push($oauth);
 	   return new Client(['base_uri' => self::TWITTER_API_BASE_URL, 'handler' => $stack, 'auth' => 'oauth']);
     }
@@ -40,10 +40,10 @@ class GuzzleTweetRepository
     public function findTweetsByUsername(string $username, int $count)
     {
         try {
-            $twitterFeedUrl	= TweetRepositoryAuth::getTwitterFeedUrlForUser($username, $count);
-            $twitterFeed	= $this->client->get($twitterFeedUrl);
-            $responseArray	= json_decode($twitterFeed->getBody());
-            $tweets			= TweetFactory::createTweetsFromArrayObjects($responseArray);
+            $twitterFeedUrl = TweetRepositoryAuth::getTwitterFeedUrlForUser($username, $count);
+            $twitterFeed    = $this->client->get($twitterFeedUrl);
+            $responseArray  = json_decode($twitterFeed->getBody());
+            $tweets         = TweetFactory::createTweetsFromArrayObjects($responseArray);
             return $tweets;
         } catch (Exception $exception) {
             if ($exception->getCode() == 404) {
